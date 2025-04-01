@@ -1,1 +1,250 @@
-<h1>你好111<h1>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我马上来挪车</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #000000 0%, #1a1a1a 100%);
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .car {
+            width: 200px;
+            height: 100px;
+            background-color: #ff9900;
+            border-radius: 20px;
+            position: relative;
+            margin: 50px auto;
+            animation: moveCar 3s infinite linear;
+        }
+
+        .wheel {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -15px;
+            animation: spinWheel 1s infinite linear;
+        }
+
+        .wheel.left {
+            left: 20px;
+        }
+
+        .wheel.right {
+            right: 20px;
+        }
+
+        .message {
+            font-size: 24px;
+            color: #fff;
+            animation: slideText 5s infinite linear;
+            white-space: nowrap;
+            position: relative;
+            left: 100%;
+        }
+
+        .phone {
+            font-size: 36px;
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: pulsePhone 2s infinite;
+            z-index: 1111;
+            position: relative;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        .danmaku {
+            position: fixed;
+            top: 0;
+            right: 0;
+            pointer-events: none;
+            z-index: 999;
+            white-space: nowrap;
+            padding: 16px 32px;
+            border-radius: 30px;
+            color: white;
+            background-color: hsl(calc(var(--random-hue, 0) * 360), 30%, 60%);
+            animation: danmakuMove linear;
+        }
+
+        @keyframes moveCar {
+            0% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(200%);
+            }
+        }
+
+        @keyframes spinWheel {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideText {
+            0% {
+                left: 100%;
+            }
+
+            100% {
+                left: -100%;
+            }
+        }
+
+        @keyframes pulsePhone {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes danmakuMove {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100vw);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="car">
+            <div class="wheel left"></div>
+            <div class="wheel right"></div>
+        </div> -->
+        <!-- <div class="message">不要催了 我马上来了！</div> -->
+        <div class="phone">18839277866</div>
+    </div>
+    <!-- 随机生成星星 -->
+    <script>
+        // for (let i = 0; i < 50; i++) {
+        //     const star = document.createElement('div');
+        //     star.classList.add('star');
+        //     star.style.left = Math.random() * window.innerWidth + 'px';
+        //     star.style.top = Math.random() * window.innerHeight + 'px';
+        //     star.style.animationDelay = Math.random() * 3 + 's';
+        //     document.body.appendChild(star);
+        // }
+
+        const messages = [
+            '别催啦，我穿拖鞋下楼都算快的了！',
+            '再催我，我车直接原地消失！',
+            '等会儿等会儿，我还在和周公下棋呢！',
+            '别催别催，我比你还急，车又不是我焊这儿的！',
+            '催啥催，我开着火箭来挪车行了吧！',
+            '我正在给轮胎打气，你要不要来帮忙？',
+            '刚发现车钥匙被猫叼走了，正在谈判中...',
+            '堵车？不存在的，我在玩真人版植物大战僵尸呢！',
+            '别催别催，我正在练习漂移入库，马上好！',
+            '车说它今天罢工，除非你夸它帅！',
+            '我在停车场迷路了，你要不要开直升机来接我？',
+            '挪车？等我吃完这碗泡面先！',
+            '刚被外星人绑架了，现在正在星际法庭保释中！',
+            '车被封印了，需要集齐七个龙珠才能召唤神龙...',
+            '堵车是假象，我在测试新发明的隐身车衣！',
+            '我在给车讲睡前故事，讲完就来！',
+            '车说它要减肥，现在正在做瑜伽呢！',
+            '刚发现停车场有宝藏，挖到就来挪车！',
+            '堵车？不存在的，我在参加 F1 热身赛！',
+            '挪车？等我给车做完 spa 先！',
+            '我在停车场拍电影呢，你要不要当群众演员？',
+            '车说它今天生日，要先吃蛋糕！',
+            '刚被交警蜀黍请去喝茶了，马上到！',
+            '堵车？不存在的，我在玩真人版大富翁呢！',
+            '挪车？等我把车从树上弄下来先！'
+        ];
+
+        let currentIndex = 0;
+        let isGenerating = false;
+
+        function generateDanmaku() {
+            if (isGenerating) return;
+            isGenerating = true;
+
+            const numDanmaku = Math.floor(window.innerHeight / 80); // 计算一次出现的弹幕数量
+            for (let i = 0; i < numDanmaku; i++) {
+                if (currentIndex >= messages.length) {
+                    currentIndex = 0;
+                }
+                const danmaku = document.createElement('div');
+                danmaku.classList.add('danmaku');
+                danmaku.style.top = `${i * 80}px`;
+                danmaku.style.setProperty('--random-hue', Math.random());
+                danmaku.style.animationDuration = `6s`;
+                danmaku.textContent = messages[currentIndex];
+                currentIndex++;
+                document.body.appendChild(danmaku);
+
+                danmaku.addEventListener('animationend', () => {
+                    danmaku.remove();
+                    if (document.querySelectorAll('.danmaku').length === 0) {
+                        isGenerating = false;
+                        generateDanmaku();
+                    }
+                });
+            }
+        }
+
+        // 初始启动
+        generateDanmaku();
+    </script>
+</body>
+
+</html>
